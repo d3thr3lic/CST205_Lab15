@@ -1,3 +1,7 @@
+##CST 205 -lab 15
+#Mitchell Saunders
+#Nicholas Saunders
+
 import random #for p1
 import time #for p1
 import calendar #for p2
@@ -12,6 +16,7 @@ def days2BDay():
   bDay = datetime.date(1994, 10, 6)
   daysTill = datetime.date.today() - lastBDay(bDay)
   print(daysTill)
+  
 def lastBDay(bDay):
   currentDate = datetime.date.today()
   thisYear = currentDate.year
@@ -37,12 +42,18 @@ def dayOfDeclaration():
   print("%s %s %dth, %d" %(dayName, monthName, day, year))
 
 def getMonthName(monthNum):
+#when called, will call from list index 1 for "Janurary" to 12 for "December"
+  monthNum = monthNum -1
+  #offsets list by one so correct input for index
   monthList = ["January", "Feburary", "March", "April", "May", \
                "June", "July", "August", "September", "October", \
                "November", "December"]
   return monthList[monthNum]
 
 def getDayName(weekDay):
+#index starts at 1 for "Monday" and all the way to 7 for "Sunday"
+  weekDay = weekDay -1
+  #offsets list by one so correct input for index
   dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   return dayList[weekDay] 
   
@@ -59,7 +70,7 @@ def game():
     dieTotal = firstRoll + secondRoll
     print("Your die rolls are %d and %d." %(firstRoll, secondRoll))
     if isWin(dieTotal, point, numOfRolls):
-      print("Congradulations! You Won!")
+      print("Congratulations! You Won!")
       break
     elif isLose(dieTotal, point, numOfRolls):
       print("Sorry. You Lose.")
@@ -85,10 +96,11 @@ def isLose(dieTotal, point, numOfRolls):
     return False
 
 def getDieRoll():
+  #uses a random seed based off of time to have a random number.
   random.seed(time.clock())
   rn = random.random()
   sidesOfDice = 6
-  
+  #uses random number to be limited by the sides of dice being rolled
   diceRoll = ceil(rn * sidesOfDice)
   
   return(diceRoll)
